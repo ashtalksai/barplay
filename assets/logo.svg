@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;display=swap');
+    </style>
+  </defs>
+  <!-- Background transparent -->
+  <!-- Amber spark/dot accent -->
+  <circle cx="14" cy="40" r="5" fill="#E8872A" opacity="0.9"/>
+  <circle cx="14" cy="40" r="9" fill="#E8872A" opacity="0.2"/>
+  <!-- Wordmark: Barplay in Playfair Display -->
+  <text
+    x="30"
+    y="54"
+    font-family="'Playfair Display', Georgia, 'Times New Roman', serif"
+    font-weight="700"
+    font-size="44"
+    fill="#E8872A"
+    letter-spacing="-1"
+  >Barplay</text>
+</svg>

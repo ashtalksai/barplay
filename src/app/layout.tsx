@@ -26,6 +26,7 @@ const dmMono = DM_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://barplay.ashketing.com"),
   title: "Barplay — Turn Empty Tables Into Conversations",
   description:
     "Barplay puts a QR code on every table. Guests scan, play trivia, and connect with strangers two tables over. Bar owners get the dwell-time data to prove it works.",
@@ -36,6 +37,7 @@ export const metadata: Metadata = {
     url: "https://barplay.ashketing.com",
     siteName: "Barplay",
     type: "website",
+    images: ["/images/og-image.png"],
   },
 };
 
