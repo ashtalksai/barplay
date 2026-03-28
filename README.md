@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Barplay — QR Code Icebreaker Game for Bars
 
-## Getting Started
+Turn empty tables into conversations. Barplay puts a QR code on every table — guests scan, play trivia, and connect with strangers two tables over. Bar owners get dwell-time data to prove it works.
 
-First, run the development server:
+## Tech Stack
+
+- **Framework:** Next.js 15 (App Router)
+- **Components:** shadcn/ui
+- **Styling:** Tailwind CSS
+- **Animations:** Framer Motion
+- **Auth:** NextAuth.js (email + Google OAuth)
+- **Database:** PostgreSQL (Prisma ORM)
+- **Fonts:** Playfair Display + DM Sans + DM Mono
+
+## Quick Start
 
 ```bash
+npm install
+cp .env.local.example .env.local  # fill in values
+npx prisma generate
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Environment Variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```env
+DATABASE_URL="postgresql://..."
+AUTH_SECRET="..."
+NEXTAUTH_URL="https://barplay.ashketing.com"
+GOOGLE_CLIENT_ID=""
+GOOGLE_CLIENT_SECRET=""
+STRIPE_SECRET_KEY=""
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=""
+NEXT_PUBLIC_URL="https://barplay.ashketing.com"
+NEXT_PUBLIC_GA_ID="G-E4NCD9HZZZ"
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Pages
 
-## Learn More
+| Page | Description |
+|------|-------------|
+| `/` | Landing page (10 sections) |
+| `/about` | Company story, mission, differentiators |
+| `/pricing` | Plans, feature comparison table, FAQ |
+| `/signup` | Bar owner registration (14-day trial) |
+| `/login` | Bar owner login |
+| `/dashboard` | Live session dashboard, table heatmap, analytics |
+| `/dashboard/analytics` | Weekly breakdowns, top questions |
+| `/dashboard/qr-codes` | Generate and download QR codes |
+| `/dashboard/games` | Game format library (Trivia, Would You Rather, Hot Takes) |
+| `/dashboard/settings` | Venue and account settings |
+| `/play/[venueId]/[tableId]` | Guest game interface (no login) |
+| `/contact` | Contact form |
+| `/privacy` | Privacy policy |
+| `/terms` | Terms of service |
+| `/deck` | Pitch deck (10 Framer Motion slides) |
+| `/docs` | Documentation hub (5 sections) |
 
-To learn more about Next.js, take a look at the following resources:
+## Deploy
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Dockerfile included for Coolify deployment:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+# Builds a ~200MB standalone container
+docker build -t barplay .
+docker run -p 3000:3000 barplay
+```
 
-## Deploy on Vercel
+## Brand
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Colors:** #0F0D0A (bg), #E8872A (amber accent), #F5EDD8 (cream text)
+- **Fonts:** Playfair Display (display), DM Sans (body), DM Mono (data)
+- **Signature:** Amber Connection Spark animation when strangers match
