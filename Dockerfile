@@ -16,14 +16,5 @@ COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
 COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
-COPY --from=builder /app/node_modules/prisma ./node_modules/prisma
-COPY --from=builder /app/prisma ./prisma
-COPY --from=builder /app/package.json ./package.json
-
-# Create a simple migration script that uses the prisma binary directly
-RUN echo '#!/bin/sh' > /app/start.sh && \
-    echo 'node ./node_modules/prisma/build/index.js migrate deploy && node server.js' >> /app/start.sh && \
-    chmod +x /app/start.sh
-
 EXPOSE 3000
-CMD ["/app/start.sh"]
+CMD ["node", "server.js"]
